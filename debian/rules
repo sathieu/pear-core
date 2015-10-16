@@ -1,0 +1,10 @@
+#!/usr/bin/make -f
+%:
+	dh $@ --buildsystem=phppear --with phppear
+
+.PHONY: debian/php-pear.substvars-static
+debian/php-pear.substvars-static:
+	pkgtools phppear substvars > debian/php-pear.substvars-static
+
+override_dh_phppear:
+	cat debian/php-pear.substvars-static >> debian/php-pear.substvars

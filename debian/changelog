@@ -1,0 +1,6 @@
+php-pear (1:1.10.0-1) unstable; urgency=low
+
+  * Initial release. (Closes: #801919)
+  * Using epoch, as package was previously in src:php5 (Closes: #714848)
+
+ -- Mathieu Parent <sathieu@debian.org>  Fri, 16 Oct 2015 06:47:48 +0200
