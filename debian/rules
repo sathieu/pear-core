@@ -49,6 +49,12 @@ override_dh_auto_install:
 override_dh_install:
 	dh_install --fail-missing
 
+override_dh_installdocs:
+	dh_installdocs
+	# As with pkg-php-tools:
+	mv debian/php-pear/usr/share/doc/php-pear/package2.xml \
+	   debian/php-pear/usr/share/doc/php-pear/package.xml
+
 override_dh_link:
 	# This mimic dh_phppear
 	cat debian/php-pear.substvars-static >> debian/php-pear.substvars
