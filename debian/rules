@@ -1,5 +1,7 @@
 #!/usr/bin/make -f
 
+PACKAGE_VERSION=$(shell dpkg-parsechangelog | grep  '^Version: ' | cut -d: -f3 | cut -d+ -f1)
+
 %:
 	dh $@
 
@@ -28,6 +30,21 @@ override_dh_auto_install:
 	      debian/tmp/usr/share/php/PEAR/Start \
 	      debian/tmp/usr/share/php/PEAR/Start.php \
 	      debian/tmp/usr/share/php/PEAR/Warning.php
+	# Mimic tasks:replace
+	sed -i -e 's/@php_bin@/\/usr\/bin\/php/g' \
+	       -e 's/@php_dir@/\/usr\/share\/php/g' \
+	       -e 's/@include_path@/\/usr\/share\/php/g' \
+	       debian/tmp/usr/bin/peardev \
+	       debian/tmp/usr/bin/pear \
+	       debian/tmp/usr/bin/pecl
+	sed -i -e 's/@package_version@/${PACKAGE_VERSION}/g' \
+	       -e 's/@PEAR-VER@/${PACKAGE_VERSION}/g' \
+	       -e 's/@include_path@/\/usr\/share\/php/g' \
+	       -e 's/@pear_version@/${PACKAGE_VERSION}/g' \
+	       debian/tmp/usr/share/php/*.php \
+	       debian/tmp/usr/share/php/*/*.php \
+	       debian/tmp/usr/share/php/PEAR/*/*.php \
+	       debian/tmp/usr/share/php/PEAR/*/*/*.php
 
 override_dh_install:
 	dh_install --fail-missing
