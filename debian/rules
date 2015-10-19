@@ -1,10 +1,38 @@
 #!/usr/bin/make -f
+
 %:
-	dh $@ --buildsystem=phppear --with phppear
+	dh $@
 
 .PHONY: debian/php-pear.substvars-static
 debian/php-pear.substvars-static:
 	pkgtools phppear substvars > debian/php-pear.substvars-static
 
-override_dh_phppear:
+override_dh_auto_install:
+	mkdir -p debian/tmp/usr/bin
+	install scripts/peardev.sh debian/tmp/usr/bin/peardev
+	install scripts/pear.sh debian/tmp/usr/bin/pear
+	install scripts/pecl.sh debian/tmp/usr/bin/pecl
+	mkdir -p debian/tmp/usr/share/php/data/PEAR
+	cp -a OS \
+	      PEAR/ \
+	      PEAR.php \
+	      scripts/pearcmd.php \
+	      scripts/peclcmd.php \
+	      System.php \
+	      debian/tmp/usr/share/php
+	cp -a package.dtd \
+	      template.spec \
+	      debian/tmp/usr/share/php/data/PEAR
+	# Remove files not installed from package2.xml
+	rm -r debian/tmp/usr/share/php/PEAR/REST/14.php \
+	      debian/tmp/usr/share/php/PEAR/Start \
+	      debian/tmp/usr/share/php/PEAR/Start.php \
+	      debian/tmp/usr/share/php/PEAR/Warning.php
+
+override_dh_install:
+	dh_install --fail-missing
+
+override_dh_link:
+	# This mimic dh_phppear
 	cat debian/php-pear.substvars-static >> debian/php-pear.substvars
+	dh_link
