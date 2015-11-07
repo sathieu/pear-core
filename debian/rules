@@ -28,6 +28,23 @@ override_dh_auto_install:
 	    --nodeps \
 	    -P "debian/php-pear" \
 	     ./package2.xml
+	# PEAR manpages
+	php \
+	    -d include_path=submodules/Archive_Tar:submodules/Console_Getopt:submodules/Structures_Graph:submodules/XML_Util \
+	    ./scripts/pearcmd.php \
+	    -c debian/pearrc \
+	    -d download_dir=/tmp \
+	    -d php_bin=/usr/bin/php \
+	    -d bin_dir=/usr/bin \
+	    -d php_dir=/usr/share/php \
+	    -d data_dir=/usr/share/php/data \
+	    -d doc_dir="/usr/share/doc/php-pear" \
+	    -d test_dir=/usr/share/php/tests \
+	    install \
+	    --offline \
+	    --nodeps \
+	    -P "debian/php-pear" \
+	     ./package-manpages.xml
 	# Archive_Tar
 	php \
 	    -d include_path=submodules/Archive_Tar:submodules/Console_Getopt:submodules/Structures_Graph:submodules/XML_Util \

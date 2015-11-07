@@ -2,5 +2,6 @@ php-pear (1:1.10.1+submodules-1) UNRELEASED; urgency=low
 
   * Initial release. (Closes: #801919)
   * Using epoch, as package was previously in src:php5 (Closes: #714848)
+  * Install manpages (Closes: #414878)
 
  -- Mathieu Parent <sathieu@debian.org>  Fri, 16 Oct 2015 06:47:48 +0200
