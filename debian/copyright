@@ -32,6 +32,24 @@ Copyright:
  Wez Furlong <wez@thebrainroom.com>
 License: BSD-2-clause
 
+Files: submodules/Archive_Tar/*
+Copyright: 1997-2008 Vincent Blavet <vincent@phpconcept.net>
+License: BSD-2-clause
+
+Files: submodules/Console_Getopt/*
+Copyright: 2001-2015 The PEAR developers
+License: BSD-2-clause
+
+Files: submodules/Structures_Graph/*
+Copyright: 2003 Sérgio Gonçalves Carvalho
+License: LGPL-3.0+
+
+Files: submodules/XML_Util/*
+Copyright:
+ 2003-2008 Stephan Schmidt <schst@php.net>
+ 2008 Chuck Burgess <ashnazg@php.net>
+License: BSD-2-clause
+
 Files: debian/*
 Copyright: Mathieu Parent <sathieu@debian.org>
 License: BSD-2-clause
