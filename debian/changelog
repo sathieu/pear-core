@@ -1,3 +1,9 @@
+php-pear (1:1.10.1+submodules+notgz-2) experimental; urgency=medium
+
+  * Don't depend on included libs: Structures_Graph, Console_Getopt, XML_Util
+
+ -- Mathieu Parent <sathieu@debian.org>  Tue, 08 Dec 2015 23:17:52 +0100
+
 php-pear (1:1.10.1+submodules+notgz-1) experimental; urgency=low
 
   * Initial release. (Closes: #801919)
