@@ -1,3 +1,9 @@
+php-pear (1:1.10.1+submodules+notgz-5) UNRELEASED; urgency=medium
+
+  * Replace /usr/share/doc/php-pear symlink by a dir (Closes: #817814)
+
+ -- Mathieu Parent <sathieu@debian.org>  Thu, 10 Mar 2016 21:48:35 +0100
+
 php-pear (1:1.10.1+submodules+notgz-4) unstable; urgency=medium
 
   * pecl command needs to run without -n to pickup default PHP cli
