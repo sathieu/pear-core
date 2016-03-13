@@ -2125,6 +2125,7 @@ class PEAR_Config extends PEAR
                 $this->_registry[$layer] = &$r;
                 $this->_registry[$layer]->setConfig($this, false);
                 $this->_regInitialized[$layer] = false;
+                unset($r);
             }
         }
     }
